@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://developerpritam.in/sitemap.xml
+

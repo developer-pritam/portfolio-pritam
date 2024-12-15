@@ -2,26 +2,150 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 5.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 5.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 98%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .card-animation {
+    @apply relative overflow-hidden;
+  }
+
+  .card-animation::before {
+    content: "";
+    @apply absolute inset-0 z-[-1] bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .card-animation:hover::before {
+    @apply opacity-100;
+    animation: shine 1.5s infinite;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* Keep your animations and other custom CSS outside layers */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
   }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slide {
+
+  0%,
+  45% {
+    transform: translateY(0%);
+  }
+
+  50%,
+  95% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.text-slide {
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 1.2em;
+}
+
+.text-slide>span {
+  display: block;
+  height: 100%;
+  animation: slide 6s cubic-bezier(0.83, 0, 0.17, 1) infinite;
+  padding: 0;
+  margin: 0;
+}
+
+.animate-text-slide {
+  @apply relative;
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-color: rgb(148 163 184 / 0.2);
+  }
+
+  50% {
+    border-color: rgb(148 163 184 / 0.5);
+  }
+
+  100% {
+    border-color: rgb(148 163 184 / 0.2);
+  }
+}
+
+.animated-border {
+  animation: borderAnimation 3s ease-in-out infinite;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgb(148 163 184 / 0.3);
 }

@@ -1,8 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Modern Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion. Features a clean design with smooth animations, dark mode support, and a contact form integrated with Google Forms.
 
-First, run the development server:
+![Portfolio Preview](public/images/programmer.svg)
+
+## 🌟 Features
+
+- **Modern Tech Stack**: Built with Next.js 14, TypeScript, and Tailwind CSS
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Dark Mode**: Automatic and manual dark mode switching
+- **Smooth Animations**: Page transitions and UI animations using Framer Motion
+- **Contact Form**: Integrated with Google Forms for easy message submission
+- **SEO Optimized**: Built with SEO best practices in mind
+- **Fast Performance**: Optimized for speed and performance
+- **Clean UI**: Modern and minimalist design
+
+## 🚀 Quick Start
+
+1. Clone the repository:
 
 ```bash
 npm run dev
